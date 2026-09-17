@@ -1,0 +1,24 @@
+services:
+
+  redmine:
+    build: .
+    image: redmine
+    container_name: redmine
+    restart: on-failure:3
+    ports:
+      - 8080:3000
+    environment:
+      REDMINE_DB_MYSQL: db
+      REDMINE_DB_PASSWORD: example
+      REDMINE_SECRET_KEY_BASE: supersecretkey
+      REDMINE_PLUGINS_MIGRATE: true
+    volumes:
+      - ./plugins:/usr/src/redmine/plugins
+
+
+  db:
+    image: mysql:8.0
+    restart: on-failure:3
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: redmine
