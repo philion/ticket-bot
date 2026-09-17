@@ -1,0 +1,3 @@
+[submodule "plugins/redmine_subfolio"]
+	path = plugins/redmine_subfolio
+	url = https://github.com/subversive-tools/redmine_subfolio.git
